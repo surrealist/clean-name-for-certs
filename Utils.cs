@@ -20,7 +20,7 @@ namespace GF.CleanNameForCerts {
 
         do {
           n = s.Length;
-          s = s.Replace("\t", "");
+          s = s.Replace("\t", " ");
           s = s.Replace("  ", " ");
         } while (s.Length != n);
 
@@ -32,7 +32,8 @@ namespace GF.CleanNameForCerts {
       foreach (var line in lines) {
         string s;
 
-        s = Regex.Replace(line, @"^(?i)MR.", ""); 
+        s = Regex.Replace(line, @"^(?i)MR.", "");
+        s = Regex.Replace(s, @"^(?i)MS.", "");
         s = Regex.Replace(s, @"^(?i)MISS", "");
         yield return s;
       }
